@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Valentine's Surprise 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: url('https://i.imgur.com/9kGqZyT.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      overflow-x: hidden;
+      color: #f01179e6;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .nav {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      z-index: 10;
+      background: #d310754d;
+      padding: 5px 0;
+      backdrop-filter: blur(5px);
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.1);
+    }
+
+    .page {
+      display: none;
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+      position: relative;
+      z-index: 5;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
+      letter-spacing: 0.5px;
+    }
+
+    .cat {
+      width: 180px;
+      margin: 20px auto;
+      position: relative;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    .cat img {
+      width: 100%;
+      filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: 2px solid #fff;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: underline;
+      letter-spacing: 1px;
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.05);
+      text-shadow: 0 0 5px #fff;
+    }
+
+    .btn.yes {
+      color: #ff6b6b;
+      border-color: #ff6b6b;
+    }
+
+    .btn.yes:hover {
+      color: #fff;
+      background: #ff6b6b;
+    }
+
+    .btn.skip {
+      color: #6b6bff;
+      border-color: #6b6bff;
+    }
+
+    .btn.skip:hover {
+      color: #fff;
+      background: #6b6bff;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Optional: Add subtle parallax effect */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+      z-index: -1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 { font-size: 1.4rem; }
+      .cat { width: 140px; }
+      .buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Page 1 -->
+  <div id="page1" class="page active">
+    <h1>Hey babe, I made a little surprise for you<br>you are not allowed to skip ittttt</h1>
+    <div class="cat">
+      <img src="https://media.tenor.com/ivKWdfdbV3EAAAAi/goma-goma-cat.gif" alt="Cute Cat">
+    </div>
+    <div class="buttons">
+      <div class="btn yes" onclick="goToPage(2)">yes</div>
+      <div class="btn skip" onclick="skipToLast()">i'll skip</div>
+    </div>
+  </div>
+
+  <!-- Page 2 -->
+  <div id="page2" class="page">
+    <h1>You’re so sweet for saying yes.. Naa chinni Bangaaram 😘</h1>
+    <div class="cat">
+      <img src="https://media.tenor.com/skrULsl5twcAAAAi/bubududukiwi-twitter.gif" alt="Cute Cat">
+    </div>
+    <div class="buttons">
+      <div class="btn" onclick="goToPage(3)">Next ➡️</div>
+    </div>
+  </div>
+
+  <!-- Page 3 -->
+  <div id="page3" class="page">
+    <h1>I’ve been thinking about you… a lot My dear Buddi Srivalli.</h1>
+    <div class="cat">
+      <img src="https://media.tenor.com/qeJtDi4BOkwAAAAi/tkthao219-bubududu.gif" alt="Cute Cat">
+    </div>
+    <div class="buttons">
+      <div class="btn" onclick="goToPage(4)">Keep going 💕</div>
+    </div>
+  </div>
+
+  <!-- Page 4 -->
+  <div id="page4" class="page">
+    <h1>Remember when we first met? I knew you were special.</h1>
+    <div class="cat">
+      <img src="/CODING/Valentine-week/Snapchat-1671892203.jpg" alt="Cute Cat">
+    </div>
+    <div class="buttons">
+      <div class="btn" onclick="goToPage(5)">Tell me more 🥺</div>
+    </div>
+  </div>
+
+  <!-- Page 5 -->
+  <div id="page5" class="page">
+    <h1>Every laugh, every glance… I treasure them all.</h1>
+    <div class="cat">
+      <img src="/CODING/Valentine-week/Snapchat-786980504.jpg" alt="Cute Cat">
+    </div>
+    <div class="buttons">
+      <div class="btn" onclick="goToPage(6)">Awwww ❤️</div>
+    </div>
+  </div>
+
+  <!-- Page 6 -->
+  <div id="page6" class="page">
+    <h1>I wrote this for you… with my heart.</h1>
+    <div class="cat">
+      <img src="/CODING/Valentine-week/loveletter.jpg" alt="Cute Cat">
+    </div>
+    <div class="buttons">
+      <div class="btn" onclick="goToPage(7)">Read it 💌</div>
+    </div>
+  </div>
+
+  <!-- Page 7 -->
+  <div id="page7" class="page">
+    <h1>You make my world brighter, warmer, and infinitely better.</h1>
+    <div class="cat">
+      <img src="/CODING/Valentine-week/Snapchat-1983958771.jpg" alt="Cute Cat">
+    </div>
+    <div class="buttons">
+      <div class="btn" onclick="goToPage(8)">I feel the same 💖</div>
+    </div>
+  </div>
+
+  <!-- Page 8 -->
+  <div id="page8" class="page">
+    <h1>I want to grow old with you… holding hands, sharing dreams.</h1>
+    <div class="cat">
+      <img src="/CODING/Valentine-week/Snapchat-206149598.jpg" alt="Cute Cat">
+      <img src="/CODING/Valentine-week/Snapchat-1996315610.jpg" alt="Cute Cat">
+    </div>
+    <div class="buttons">
+      <div class="btn" onclick="goToPage(9)">Me too 🥰</div>
+    </div>
+  </div>
+
+  <!-- Page 9 -->
+  <div id="page9" class="page">
+    <h1>So… will you be mine forever?</h1>
+    <div class="cat">
+      <img src="/CODING/Valentine-week/-6296484659835551920_121.jpg" alt="Cute Cat">
+    </div>
+    <div class="buttons">
+      <div class="btn yes" onclick="goToPage(10)">YES!!! 💍</div>
+      <div class="btn skip" onclick="skipToLast()">I’ll think about it…</div>
+    </div>
+  </div>
+
+  <!-- Page 10 -->
+  <div id="page10" class="page">
+    <h1>YAYYYYY!!! You made my day! 🎉</h1>
+    <div class="cat">
+      <img src="https://c.tenor.com/Eyc2xn_0BFsAAAAC/tenor.gif" alt="Cute Cat">
+    </div>
+    <div class="buttons">
+      <div class="btn" onclick="goToPage(11)">What’s next? 😍</div>
+    </div>
+  </div>
+
+  <!-- Page 11 -->
+  <div id="page11" class="page">
+    <h1>I have a real gift waiting for you… in person 😉</h1>
+    <div class="cat">
+      <img src="https://c.tenor.com/4sgToCLsMY8AAAAC/tenor.gif" alt="Cute Cat">
+    </div>
+    <div class="buttons">
+      <div class="btn" onclick="goToPage(12)">I’m coming now!! 🏃‍♀️💨</div>
+    </div>
+  </div>
+
+  <!-- Page 12 -->
+  <div id="page12" class="page">
+    <h1>Thank you for being YOU. I love you endlessly. 💖</h1>
+    <h1> Naa Buddi Bangaaru Navya Srivalli 💘😘😍✨</h1>
+    <div class="cat">
+      <img src="https://c.tenor.com/pnpaL9TrpFQAAAAC/tenor.gif" alt="Cute Cat">
+    </div>
+    <h1>Can’t wait to see you soon! Naa Wifey😘</h1>
+    <div class="buttons">
+      <div class="btn" onclick="restart()">Wanna See again? 🔄</div>
+    </div>
+  </div>
+  <script>
+        const skipBtn = document.getElementById('btn skip');
+        const yesBtn = document.getElementById('btn yes');
+        const mainScreen = document.getElementById('main-screen');
+        const successScreen = document.getElementById('success-screen');
+
+        // Logic to make the "Skip" button run away
+        const moveButton = () => {
+            // Get window dimensions
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            // Get button dimensions
+            const btnWidth = skipBtn.offsetWidth;
+            const btnHeight = skipBtn.offsetHeight;
+
+            // Calculate random positions within the visible viewport
+            // Subtracting header height (approx 40px) and button size to keep it on screen
+            const randomX = Math.random() * (windowWidth - btnWidth - 50); 
+            const randomY = Math.random() * (windowHeight - btnHeight - 100);
+
+            // Change position to absolute so it breaks out of the flex container
+            skipBtn.style.position = 'fixed';
+            skipBtn.style.left = `${Math.max(10, randomX)}px`;
+            skipBtn.style.top = `${Math.max(50, randomY)}px`;
+        };
+
+        // Listen for hover (desktop) and touch (mobile)
+        skipBtn.addEventListener('mouseover', moveButton);
+        skipBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // prevents actual clicking on mobile
+            moveButton();
+        });
+
+        // Logic for clicking "Yes"
+        yesBtn.addEventListener('click', () => {
+            mainScreen.style.display = 'none';
+            successScreen.style.display = 'flex';
+            
+            // Optional: You can trigger confetti here if you want!
+        });
+    </script>
+
+  <script>
+    function goToPage(pageNum) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(`page${pageNum}`).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+    
+    function restart() {
+      goToPage(1);
+    }
+
+    // Optional: Smooth scroll on nav click
+    document.querySelectorAll('.nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = link.getAttribute('href').substring(1);
+        const pageNum = parseInt(target.replace('page', ''));
+        goToPage(pageNum);
+      });
+    });
+
+    // Optional: Keyboard navigation
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') {
+        const current = [...document.querySelectorAll('.page')].findIndex(p => p.classList.contains('active'));
+        if (current < 11) goToPage(current + 2);
+      } else if (e.key === 'ArrowLeft') {
+        const current = [...document.querySelectorAll('.page')].findIndex(p => p.classList.contains('active'));
+        if (current > 0) goToPage(current);
+      }
+    });
+  </script>
+
+</body>
+</html>
